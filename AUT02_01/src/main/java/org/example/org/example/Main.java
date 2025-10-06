@@ -1,10 +1,24 @@
 package org.example;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+
+import org.example.añadirAlumnos.Estudiante;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        int opcion;
+        String nombre = "";
+        int edad = 0;
+        float nota_media = 0;
+        boolean matriculado = false;
+
+        List<Estudiante> listaEstudiantes = new ArrayList<Estudiante>();
+
+        Estudiante estudiante = new Estudiante(nombre, edad, nota_media, matriculado);
 
         do {
             System.out.println("""
@@ -17,42 +31,43 @@ public class Main {
                 6. Salir
                 """);
             sc.nextLine();
-            System.out.println("Seleccione una opción");
-            int opcion = sc.nextInt();
+
+            System.out.println("Seleccione una opción: ");
+            opcion = sc.nextInt();
+            sc.nextLine();
 
             switch (opcion) {
                 case 1:
                     System.out.println("Introduce nombre: ");
-                    String nombre = sc.nextLine();
+                    nombre = sc.nextLine();
 
                     System.out.println("Introduce edad: ");
-                    int edad = sc.nextInt();
-
-                    sc.nextLine();
+                    edad = sc.nextInt(); sc.nextLine();
 
                     System.out.println("Introduce nota media: ");
-                    float nota_media = sc.nextFloat();
+                    nota_media = sc.nextFloat(); sc.nextLine();
 
                     System.out.println("Introduce matriculado (true/false): ");
-                    boolean matriculado = sc.nextBoolean();
+                    matriculado = sc.nextBoolean();
 
-                    añadirEstudiante.añadirAlumno(nombre, edad, nota_media, matriculado);
+                    estudiante.añadirEstudiante(estudiante);
                     break;
                 case 2:
+                    estudiante.toString();
                     break;
                 case 3:
-                    funcion;
                     break;
                 case 4:
-                    funcion;
                     break;
                 case 5:
-                    funcion;
                     break;
-                case *:
+                case 6:
+                    break;
+                default:
+                    System.out.println("Opción invalida.");
                     break;
             }
-        } while(opcion != 6)
+        } while(opcion != 6);
 
 
     }

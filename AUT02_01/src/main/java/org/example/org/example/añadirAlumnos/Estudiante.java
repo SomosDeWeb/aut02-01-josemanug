@@ -1,12 +1,16 @@
-public class añadirEstudiante {
-    String nombre;
-    int edad;
-    float nota_media;
-    boolean matriculado;
+package org.example.añadirAlumnos;
 
-    String listaAlumnos;
+import java.util.ArrayList;
+import java.util.List;
 
-    public añadirEstudiante(String nombre, int edad, float nota_media, boolean matriculado) {
+public class Estudiante {
+    private String nombre;
+    private int edad;
+    private float nota_media;
+    private boolean matriculado;
+
+
+    public Estudiante(String nombre, int edad, float nota_media, boolean matriculado) {
         this.nombre = nombre;
         this.edad = edad;
         this.nota_media = nota_media;
@@ -45,8 +49,13 @@ public class añadirEstudiante {
         this.matriculado = matriculado;
     }
 
-    public String añadirAlumno(String nombre, int edad, float nota_media) {
-        listaAlumnos.concat(nombre, edad, nota_media);
-        return listaAlumnos;
+
+    @Override
+    public String toString() {
+        for (int i = 0; i < listaEstudiantes.toArray().length; i++) {
+            return listaEstudiantes.get(i).toString();
+        }
     }
 }
+
+
