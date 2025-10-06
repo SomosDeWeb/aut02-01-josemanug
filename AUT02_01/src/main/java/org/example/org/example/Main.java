@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int opcion;
+        int opcion = 0;
         String nombre = "";
         int edad = 0;
         float nota_media = 0;
@@ -29,7 +29,6 @@ public class Main {
                 5. Mostrar mejor estudiante
                 6. Salir
                 """);
-
             System.out.println("Seleccione una opción: ");
             opcion = sc.nextInt();
             sc.nextLine();
@@ -40,10 +39,12 @@ public class Main {
                     nombre = sc.nextLine();
 
                     System.out.println("Introduce edad: ");
-                    edad = sc.nextInt(); sc.nextLine();
+                    edad = sc.nextInt();
+                    sc.nextLine();
 
                     System.out.println("Introduce nota media: ");
-                    nota_media = sc.nextFloat(); sc.nextLine();
+                    nota_media = sc.nextFloat();
+                    sc.nextLine();
 
                     System.out.println("Introduce matriculado (true/false): ");
                     matriculado = sc.nextBoolean();
@@ -60,15 +61,15 @@ public class Main {
                     break;
                 case 3:
                     System.out.println("Nombre del alumno a buscar: ");
-                    String nom =  sc.nextLine();
+                    String nom = sc.nextLine();
                     int pos = 0;
-                    while(!(estudiante.getNombre().equals(nom)) && pos < listaEstudiantes.toArray().length - 1) {
+                    while (!(estudiante.getNombre().equals(nom)) && pos < listaEstudiantes.toArray().length - 1) {
                         pos++;
                     }
-                    if(listaEstudiantes.get(pos).getNombre().equals(nom)) {
-                        listaEstudiantes.get(pos).toString();
+                    if (listaEstudiantes.get(pos).getNombre().equals(nom)) {
+                        System.out.println(listaEstudiantes.get(pos).toString());
                     }
-                    if(pos ==  listaEstudiantes.size() && !(estudiante.getNombre().equals(nom))) {
+                    if (pos == listaEstudiantes.size() && !(estudiante.getNombre().equals(nom))) {
                         System.out.println("No existe el alumno a buscar. \n");
                     }
                     break;
@@ -80,7 +81,17 @@ public class Main {
                     }
                     mediaGeneral = totalNota / listaEstudiantes.toArray().length;
                     System.out.println("La media general es de: " + mediaGeneral + "\n");
+                    break;
                 case 5:
+                    float maxNota = 0;
+                    int i = 0;
+                    while (i < listaEstudiantes.toArray().length && listaEstudiantes.get(i).getNota_media() > maxNota) {
+                        maxNota = listaEstudiantes.get(i).getNota_media();
+                        i++;
+                    }
+                    if (listaEstudiantes.get(i).getNota_media() == maxNota) {
+                        System.out.println(listaEstudiantes.get(i).toString());
+                    }
                     break;
                 case 6:
                     break;
@@ -90,7 +101,5 @@ public class Main {
             }
         } while(opcion != 6);
         System.out.println("Cerrando programa...");
-
-
     }
 }
