@@ -7,10 +7,6 @@ public class Main {
         Scanner sc = new Scanner(System.in);
 
         do {
-
-            System.out.println("Seleccione una opción");
-            int opcion = sc.nextInt();
-            sc.nextLine();
             System.out.println("""
                 === Gestor de Estudiantes ===
                 1. Añadir estudiante
@@ -20,13 +16,29 @@ public class Main {
                 5. Mostrar mejor estudiante
                 6. Salir
                 """);
+            sc.nextLine();
+            System.out.println("Seleccione una opción");
+            int opcion = sc.nextInt();
 
             switch (opcion) {
                 case 1:
-                    funcion;
+                    System.out.println("Introduce nombre: ");
+                    String nombre = sc.nextLine();
+
+                    System.out.println("Introduce edad: ");
+                    int edad = sc.nextInt();
+
+                    sc.nextLine();
+
+                    System.out.println("Introduce nota media: ");
+                    float nota_media = sc.nextFloat();
+
+                    System.out.println("Introduce matriculado (true/false): ");
+                    boolean matriculado = sc.nextBoolean();
+
+                    añadirEstudiante.añadirAlumno(nombre, edad, nota_media, matriculado);
                     break;
                 case 2:
-                    funcion;
                     break;
                 case 3:
                     funcion;
