@@ -1,14 +1,12 @@
 package org.example.añadirAlumnos;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Estudiante {
     private String nombre;
     private int edad;
     private float nota_media;
     private boolean matriculado;
 
+    public Estudiante() {}
 
     public Estudiante(String nombre, int edad, float nota_media, boolean matriculado) {
         this.nombre = nombre;
@@ -52,9 +50,7 @@ public class Estudiante {
 
     @Override
     public String toString() {
-        for (int i = 0; i < listaEstudiantes.toArray().length; i++) {
-            return listaEstudiantes.get(i).toString();
-        }
+        return nombre + " (" + edad + " años) - Nota media: " + nota_media + " - Matriculado: " + matriculado + "\n";
     }
 }
 

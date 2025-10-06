@@ -15,10 +15,9 @@ public class Main {
         int edad = 0;
         float nota_media = 0;
         boolean matriculado = false;
+        Estudiante estudiante = new Estudiante();
 
         List<Estudiante> listaEstudiantes = new ArrayList<Estudiante>();
-
-        Estudiante estudiante = new Estudiante(nombre, edad, nota_media, matriculado);
 
         do {
             System.out.println("""
@@ -30,7 +29,6 @@ public class Main {
                 5. Mostrar mejor estudiante
                 6. Salir
                 """);
-            sc.nextLine();
 
             System.out.println("Seleccione una opción: ");
             opcion = sc.nextInt();
@@ -50,15 +48,38 @@ public class Main {
                     System.out.println("Introduce matriculado (true/false): ");
                     matriculado = sc.nextBoolean();
 
-                    estudiante.añadirEstudiante(estudiante);
+                    estudiante = new Estudiante(nombre, edad, nota_media, matriculado);
+
+                    listaEstudiantes.add(estudiante);
                     break;
                 case 2:
-                    estudiante.toString();
+                    System.out.println("Lista de estudiantes: \n");
+                    for (int i = 0; i < listaEstudiantes.toArray().length; i++) {
+                        System.out.println(listaEstudiantes.get(i).toString());
+                    }
                     break;
                 case 3:
+                    System.out.println("Nombre del alumno a buscar: ");
+                    String nom =  sc.nextLine();
+                    int pos = 0;
+                    while(!(estudiante.getNombre().equals(nom)) && pos < listaEstudiantes.toArray().length - 1) {
+                        pos++;
+                    }
+                    if(listaEstudiantes.get(pos).getNombre().equals(nom)) {
+                        listaEstudiantes.get(pos).toString();
+                    }
+                    if(pos ==  listaEstudiantes.size() && !(estudiante.getNombre().equals(nom))) {
+                        System.out.println("No existe el alumno a buscar. \n");
+                    }
                     break;
                 case 4:
-                    break;
+                    float totalNota = 0;
+                    float mediaGeneral = 0;
+                    for (int i = 0; i < listaEstudiantes.toArray().length; i++) {
+                        totalNota += listaEstudiantes.get(i).getNota_media();
+                    }
+                    mediaGeneral = totalNota / listaEstudiantes.toArray().length;
+                    System.out.println("La media general es de: " + mediaGeneral + "\n");
                 case 5:
                     break;
                 case 6:
@@ -68,6 +89,7 @@ public class Main {
                     break;
             }
         } while(opcion != 6);
+        System.out.println("Cerrando programa...");
 
 
     }
