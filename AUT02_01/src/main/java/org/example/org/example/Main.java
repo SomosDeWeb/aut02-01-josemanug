@@ -61,15 +61,15 @@ public class Main {
                     break;
                 case 3:
                     System.out.println("Nombre del alumno a buscar: ");
-                    String nom = sc.nextLine();
+                    String nombreBuscar = sc.nextLine();
                     int pos = 0;
-                    while (!(estudiante.getNombre().equals(nom)) && pos < listaEstudiantes.toArray().length - 1) {
+                    while (!(listaEstudiantes.get(pos).getNombre().equals(nombreBuscar)) && pos < listaEstudiantes.toArray().length - 1) {
                         pos++;
                     }
-                    if (listaEstudiantes.get(pos).getNombre().equals(nom)) {
-                        System.out.println(listaEstudiantes.get(pos).toString());
+                    if (listaEstudiantes.get(pos).getNombre().equals(nombreBuscar)) {
+                        System.out.println(listaEstudiantes.get(pos).toString() + "\n");
                     }
-                    if (pos == listaEstudiantes.size() && !(estudiante.getNombre().equals(nom))) {
+                    if (pos == listaEstudiantes.size() && !(estudiante.getNombre().equals(nombreBuscar))) {
                         System.out.println("No existe el alumno a buscar. \n");
                     }
                     break;
@@ -84,14 +84,13 @@ public class Main {
                     break;
                 case 5:
                     float maxNota = 0;
-                    int i = 0;
-                    while (i < listaEstudiantes.toArray().length && listaEstudiantes.get(i).getNota_media() > maxNota) {
-                        maxNota = listaEstudiantes.get(i).getNota_media();
-                        i++;
+                    int indice = 0;
+                    for (int i = 0; i < listaEstudiantes.toArray().length; i++) {
+                        if (listaEstudiantes.get(i).getNota_media() >= maxNota) {
+                            indice = i;
+                        }
                     }
-                    if (listaEstudiantes.get(i).getNota_media() == maxNota) {
-                        System.out.println(listaEstudiantes.get(i).toString());
-                    }
+                    System.out.println("El mejor estudiante es: " + listaEstudiantes.get(indice).toString()  + "\n");
                     break;
                 case 6:
                     break;
